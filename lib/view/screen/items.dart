@@ -22,7 +22,6 @@ class Items extends StatelessWidget {
             CoustemAppar(
                onpreesIconfavorite: (){},
               titalappar: "find serche",
-              onpreesIcon: () {},
               onpreesIconserrch: () {},
             ),
 

@@ -11,7 +11,7 @@ class AppRoutse {
   static const String checkemail = "/Checkemail";
   static const String veryficodesignup = "/veryficodesignup";
   //home
-  static const String home = "/Home";
+  static const String home = "/home";
   static const String items = "/items";
   static const String prodactdetiles = "/prodactdetiles";
   static const String myfavorite = "/myfavorite";

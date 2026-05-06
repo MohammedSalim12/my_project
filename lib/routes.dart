@@ -22,7 +22,7 @@ import 'package:ecommerce_app/view/screen/items.dart';
 List<GetPage<dynamic>>? routes = [
   //Auth
    GetPage(name: "/", page: () => Language() ,
-    middlewares: [ Mymiddelware()   ]
+    middlewares: [ Mymiddelware()]
     ),
   //GetPage(name: "/", page: () => VeryfiCodeSignUp()),
   GetPage(name: AppRoutse.login, page: () => Login()),

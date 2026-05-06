@@ -8,12 +8,13 @@ import 'package:get/get.dart';
 abstract class VeriyficodeSginUpController extends GetxController {
   checkcode();
   goToSuccessSignUp();
+  resend();
 }
 
 class VeriyficodeSginUpControllerImp extends VeriyficodeSginUpController {
   late TextEditingController email; // الإيميل القادم من صفحة signup
   String code = ""; // الكود القادم من OTP widget
-  VerifycodesignupData verifycodesignupData = VerifycodesignupData(Dio()); 
+  VerifycodesignupData verifycodesignupData = VerifycodesignupData(Dio());
   late StatusRequest statusRequest;
 
   Dio dio = Dio();
@@ -23,12 +24,7 @@ class VeriyficodeSginUpControllerImp extends VeriyficodeSginUpController {
     try {
       statusRequest = StatusRequest.loding;
       update();
-      var response = await verifycodesignupData.postdata(
-        
-        email.text,
-        code,
-        
-      );
+      var response = await verifycodesignupData.postdata(email.text, code);
       print("RESPONSE: ${response.data}");
 
       if (response.statusCode == 200) {
@@ -36,7 +32,7 @@ class VeriyficodeSginUpControllerImp extends VeriyficodeSginUpController {
       }
     } catch (e) {
       Get.snackbar("خطأ", "الكود غير صحيح أو حدث خطأ في الاتصال");
-       statusRequest = StatusRequest.serverfailuor;
+      statusRequest = StatusRequest.serverfailuor;
     }
     update();
   }
@@ -48,7 +44,12 @@ class VeriyficodeSginUpControllerImp extends VeriyficodeSginUpController {
 
   @override
   void onInit() {
-    email = Get.arguments["email"] ; // جاي من صفحة signup
+    email = Get.arguments["email"]; // جاي من صفحة signup
     super.onInit();
+  }
+
+  @override
+  resend() {  
+    verifycodesignupData.resendData(email.text);
   }
 }

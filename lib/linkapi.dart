@@ -1,16 +1,16 @@
 class Applink {
   // ============== Statics =============================
-  static const String server = "http://192.168.10.206:8000";
-  static const String imagestatic = "http://192.168.10.206:8000/upload";
+  static const String server = "http://192.168.10.206:9000";
+  static const String imagestatic = "http://192.168.10.206:9000/upload";  
 
   // ========== Auth =========
   static const String signup = "$server/users/signup";
   static const String verycode = "$server/users/verify";
   static const String login = "$server/users/login";
   static const String forgetpassword = "$server/users/forgetpassword";
-  static const String verifycoderesetpassword =
-      "$server/users/verifycoderesetpassword";
+  static const String verifycoderesetpassword = "$server/users/verifycoderesetpassword";
   static const String resetpassword = "$server/users/resetpassword";
+  static const String resend = "$server/resend";
 
   // ========= Home ============
   static const String homepage = "$server/home";

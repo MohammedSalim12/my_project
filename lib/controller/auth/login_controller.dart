@@ -39,11 +39,14 @@ class LoginControllerImp extends LoginController {
       print("LOGIN URL: ${Applink.login}");
 
       var response = await loginData.postdata(email.text, password.text);
-      print("LOGIN RESPONSE: ${response}");
+      print("LOGIN RESPONSE: $response");
+
       if (response["state"] == "success") {
         statusRequest = StatusRequest.success;
-        update();
-        if (response['data']['user_approve'] == "1") {
+
+        // ✅ تصحيح المسار: نقرأ القيمة مباشرة وليس داخل data
+        if (response['user_approve'] == 1) {
+          // الحساب مفعّل -> احفظ البيانات وروح للهوم
           myServices.sharedPreferences.setString(
             "id",
             response["user_id"].toString(),
@@ -61,18 +64,22 @@ class LoginControllerImp extends LoginController {
             response["user_phone"],
           );
           myServices.sharedPreferences.setString("step", "2");
+
           Get.offNamed(AppRoutse.home);
         } else {
+          // الحساب غير مفعّل -> روح لصفحة إدخال كود التفعيل
           Get.toNamed(
             AppRoutse.veryficodesignup,
             arguments: {"email": email.text},
           );
         }
       } else {
-        Get.snackbar("خطأ", response["message"]);
+        // الإيميل غلط أو الباسورد غلط
+        Get.snackbar("خطأ", response["message"] ?? "بيانات خاطئة");
         statusRequest = StatusRequest.failuor;
       }
     } catch (e) {
+      print("LOGIN CATCH ERROR: $e");
       statusRequest = StatusRequest.serverfailuor;
       update();
       Get.snackbar("خطأ", "فشل الاتصال بالسيرفر");

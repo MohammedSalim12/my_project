@@ -31,7 +31,7 @@ class Homescreen extends StatelessWidget {
                     ? Spacer()
                     : Coustembuttomappar(
                         textbuttom:
-                            controller.listtitle[i],
+                            controller.listtitle[i], 
                         icondata:
                             controller.icondata[i],
                         onPressed: () {

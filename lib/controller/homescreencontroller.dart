@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/view/screen/home.dart';
+import 'package:ecommerce_app/view/screen/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -14,25 +15,22 @@ class HomescreencontrollerImp extends Homescreencontroller {
     Home(),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("setting"))],
+      children: [Center(child: Text("notification"))],
     ),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text("profail"))],
     ),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("favorit"))],
-    ),
+    Setting(), 
   ];
 
-  List listtitle = ["Home", "setting", "profile", "favorit"];
+  List listtitle = ["Home", "notific", "profile", "setting"]; 
 
   List icondata = [
     Icons.home_outlined,
-    Icons.settings_outlined,
+    Icons.notification_important,
     Icons.person_3_outlined,
-    Icons.favorite_outline,
+    Icons.settings_outlined,  
   ];
   @override
   chamgePage(int current) {
