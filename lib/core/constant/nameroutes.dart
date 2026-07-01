@@ -15,5 +15,12 @@ class AppRoutse {
   static const String items = "/items";
   static const String prodactdetiles = "/prodactdetiles";
   static const String myfavorite = "/myfavorite";
+  static const String cart = "/cart";
+  //Address
+  static const String addressview = "/addressview";
+  static const String addressadd = "/addressadd";
+  static const String addressaddetails = "/addressaddtwo";
+
+
 }
  

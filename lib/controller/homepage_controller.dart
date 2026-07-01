@@ -5,13 +5,17 @@ import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/home_data.dart';
-import 'package:ecommerce_app/data/modael/categiorsmmodel.dart';
+import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class HomePageController extends GetxController {
   initialData();
   getData();
   goToItems(List categories, int selectedCat, int categoriesid);
+  cheksearch(val);
+  onSearchItems();
+  searchData();
 }
 
 class HomePageControllerImp extends HomePageController {
@@ -22,8 +26,26 @@ class HomePageControllerImp extends HomePageController {
   String? username;
   String? id;
   String? land;
+  TextEditingController? search;
+  List<Itemsmodel> listdata = [];
+  bool isSearch = false;
   List categories = [];
   List items = [];
+
+  @override
+  cheksearch(val) {
+    if (val == "") {
+      isSearch = false;
+    }
+    update();
+  }
+
+  @override
+  onSearchItems() {
+    isSearch = true;
+    searchData();
+    update();
+  }
 
   @override
   initialData() {
@@ -56,6 +78,7 @@ class HomePageControllerImp extends HomePageController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     initialData();
     getData();
     super.onInit();
@@ -72,6 +95,36 @@ class HomePageControllerImp extends HomePageController {
         "selectedCat": selectedCat,
         "catId": categoriesid,
       },
+    );
+  }
+
+  @override
+  searchData() async {
+    statusRequest = StatusRequest.loding;
+    update();
+
+    var response = await homeData.searchData(search!.text);
+    print("HOME RESPONSE: $response");
+
+    statusRequest = handlingData(response);
+
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == "success") {
+        listdata.clear();
+        List responsedata = response['data'];
+        listdata.addAll(responsedata.map((e) => Itemsmodel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failuor;
+      }
+    }
+
+    update();
+  }
+
+  goToPageProdactDetiles(itemsmodel) {
+    Get.toNamed(
+      AppRoutse.prodactdetiles,
+      arguments: {"itemsmodel": itemsmodel},
     );
   }
 }

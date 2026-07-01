@@ -11,6 +11,7 @@ class Itemsmodel {
   String? itemsDiscount;
   String? itemsDate;
   String? itemsCat;
+  String? itemsPriceDiscount;
   String? categoriesId;
   String? categoriesName;
   String? categoriesNameAr;
@@ -31,6 +32,7 @@ class Itemsmodel {
     itemsDiscount = json['items_discount'].toString();
     itemsDate = json['items_date'];
     itemsCat = json['items_cat'].toString();
+    itemsPriceDiscount = json['itemspricediscount'].toString();
     categoriesId = json['categories_id'].toString();
     categoriesName = json['categories_name'];
     categoriesNameAr = json['categories_name_ar'];

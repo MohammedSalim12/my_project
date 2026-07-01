@@ -17,6 +17,7 @@ class Applink {
 
   // ========= items ============
   static const String items = "$server/items";
+  static const String search = "$server/items/search";
 
   // ================= Image =================
 
@@ -25,9 +26,22 @@ class Applink {
 
   // ================= favorite =================
   static const String favoriteAdd = "$server/favorite/add";
-  static const String favoriteRemove = "$server/favorite/remove";
+  static const String favoriteRemove = "$server/favorite/remove";    
   static const String favoriteView = "$server/favorite/view";
   static const String deletfrommyfavorite = "$server/favorite/deletefrommyfavorite";
+
+  //================ cart ======================
+  static const String cartview = "$server/cart/view";
+  static const String crtadd = "$server/cart/add";
+  static const String cartdelete = "$server/cart/delete";
+  static const String cartgetcount = "$server/cart/getcount";
+
+  //============== Address ======================
+  static const String addressView = "$server/address/view";
+  static const String addressAdd = "$server/address/add";
+  static const String addressEdait = "$server/address/edit";
+  static const String addressDelete = "$server/address/delete";
+
 }
 
 

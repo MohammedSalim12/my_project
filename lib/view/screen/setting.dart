@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/controller/settings_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/imageasset.dart';
+import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -55,7 +56,9 @@ class Setting extends StatelessWidget {
                     ),
 
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        Get.toNamed(AppRoutse.addressview);
+                      },
                       title: Text("Address"),
                       trailing: Icon(Icons.location_on_outlined),
                     ),

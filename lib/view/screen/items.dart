@@ -1,7 +1,9 @@
 import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/items_controller.dart';
 import 'package:ecommerce_app/core/class/handingdataview.dart';
+import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/widget/coustemappar.dart';
 import 'package:ecommerce_app/view/widget/items/coustemlistitems.dart';
 import 'package:ecommerce_app/view/widget/items/listCategoriesItems.dart';
@@ -19,23 +21,30 @@ class Items extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         child: ListView(
           children: [
-            CoustemAppar(
-               onpreesIconfavorite: (){},
+            GetBuilder<ItemsControllerImp>(builder: (controller)=> CoustemAppar(
+              onpreesIconserrch: () {
+                controller.onSearchItems();
+              },
+              mycontroller: controller.search!,
+              onpreesIconfavorite: () {
+                Get.toNamed(AppRoutse.myfavorite);
+              },
               titalappar: "find serche",
-              onpreesIconserrch: () {},
-            ),
-
+              onChanged: (val) {
+                controller.cheksearch(val);
+              },
+            ),),
             /// 🔥 قائمة الكاتيجوري
             ListCategoriesItems(),
             const SizedBox(height: 10),
             GetBuilder<ItemsControllerImp>(
               builder: (controller) => Handingdatacontroller(
                 statusRequest: controller.statusRequest,
-                widget: GridView.builder(
+                widget:!controller.isSearch ? GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: controller.Data.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount( 
                     crossAxisCount: 2,
                     childAspectRatio: 0.6,
                   ),
@@ -47,7 +56,7 @@ class Items extends StatelessWidget {
                       itemsmodel: Itemsmodel.fromJson(controller.Data[index]),
                     );
                   },
-                ),
+                ):ListItemsSearch(listdatamodel: controller.listdata),
               ),
             ),
           ],

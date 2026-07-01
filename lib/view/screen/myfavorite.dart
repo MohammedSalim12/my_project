@@ -20,12 +20,12 @@ class MyFavorite extends StatelessWidget {
         child: GetBuilder<MyfavoriteController>(
           builder: ((controller) => ListView(
             children: [
-              CoustemAppar(
-                onpreesIconfavorite: () {
-                  Get.toNamed(AppRoutse.myfavorite);
-                },
-                titalappar: "find serche",
-              ),
+              // CoustemAppar(
+              //   onpreesIconfavorite: () {
+              //     Get.toNamed(AppRoutse.myfavorite);
+              //   },
+              //   titalappar: "find serche",
+              // ),
               SizedBox(height: 15,),
               Handingdatacontroller(
                 statusRequest: controller.statusRequest,

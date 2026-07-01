@@ -26,6 +26,10 @@ class Handingdatacontroller extends StatelessWidget {
         ? Center(
             child: Lottie.asset(AppImageasset.offline, width: 250, height: 250),
           )
+        : statusRequest == StatusRequest.failuor
+        ? Center(
+            child: Lottie.asset(AppImageasset.noData, width: 250, height: 250),
+          )
         : widget;
   }
 }
