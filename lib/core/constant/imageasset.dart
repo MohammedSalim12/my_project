@@ -7,10 +7,14 @@ class AppImageasset {
   static const String onBoardingImageThree = "$rootImages/locishin.PNG";
   static const String onBoardingImageFour = "$rootImages/fast.PNG";
   static const String avatar = "$rootImages/avat.png";
+  static const String delivery = "$rootImages/delvery.png";
+  static const String delivery2 = "$rootImages/delivery2.jpg";
+  static const String drivethru= "$rootImages/DriveThru.png";
   static const String sellone = "$rootImages/sellone.png";
   static const String selltwo = "$rootImages/61dFyEDtp6L.jpg";
   static const String loading = "$rootLottie/Soft ui loader.json";
   static const String offline = "$rootLottie/Data Center Blue Orange.json";
   static const String noData = "$rootLottie/nodata.json";
   static const String server = "$rootLottie/No Connection.json";
+  
 }

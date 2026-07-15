@@ -30,5 +30,12 @@ class CartData {
     );
     return response.data;
   }
+
+  chekecoupon(String couponname) async {
+    var response = await dio.get(
+      "${Applink.checkcoupon}?couponname=$couponname",
+    );
+    return response.data;
+  }
   
 }

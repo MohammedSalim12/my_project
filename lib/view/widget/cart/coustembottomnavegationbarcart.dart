@@ -1,11 +1,14 @@
+import 'package:ecommerce_app/controller/cart_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/view/widget/cart/buttomCart.dart';
 import 'package:ecommerce_app/view/widget/cart/custombuttoncupon.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class CoustemBottomNavegationbarCart extends StatelessWidget {
+class CoustemBottomNavegationbarCart extends GetView<CartControllerImp> {
   final String price;
   final String discount;
+  final String shipping;
   final String totalprice;
   final TextEditingController controllercoupon;
   final void Function()? onApplyCoupon;
@@ -13,6 +16,7 @@ class CoustemBottomNavegationbarCart extends StatelessWidget {
     Key? key,
     required this.price,
     required this.discount,
+    required this.shipping,
     required this.totalprice,
     required this.controllercoupon,
     this.onApplyCoupon,
@@ -24,36 +28,47 @@ class CoustemBottomNavegationbarCart extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: TextFormField(
-                    controller: controllercoupon,
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 10,
+          GetBuilder<CartControllerImp>(
+            builder: (controller) => controller.couponname == null
+                ? Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: TextFormField(
+                            controller: controllercoupon,
+                            decoration: InputDecoration(
+                              isDense: true,
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 4,
+                                horizontal: 10,
+                              ),
+                              hintText: "Coupon Code",
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: CoustombuttomCoupon(
+                            textbuttom: "apply",
+                            onPressed: onApplyCoupon,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : Container(
+                    child: Text(
+                      "Coupon Code ${controller.couponname!}",
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
                       ),
-                      hintText: "Coupon Code",
-                      border: OutlineInputBorder(),
                     ),
                   ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: CoustombuttomCoupon(
-                    textbuttom: "apply",
-                    onPressed: onApplyCoupon,
-                  ),
-                ),
-              ],
-            ),
           ),
-
           Container(
             padding: EdgeInsets.all(10),
             margin: EdgeInsets.all(10),
@@ -74,6 +89,22 @@ class CoustemBottomNavegationbarCart extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         price,
+                        style: TextStyle(fontSize: 16, fontFamily: "sens"),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text("shipping ", style: TextStyle(fontSize: 16)),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        shipping,
                         style: TextStyle(fontSize: 16, fontFamily: "sens"),
                       ),
                     ),
@@ -129,7 +160,12 @@ class CoustemBottomNavegationbarCart extends StatelessWidget {
               ],
             ),
           ),
-          CoustombuttomOrder(textbuttom: "place Order", onPressed: () {}),
+          CoustombuttomOrder(
+            textbuttom: " Order",
+            onPressed: () {
+              controller.goToPageCheckout();
+            },
+          ),
         ],
       ),
     );

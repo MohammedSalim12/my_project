@@ -54,6 +54,20 @@ class Setting extends StatelessWidget {
                         onChanged: (val) {},
                       ), // <====== cameback later
                     ),
+                    ListTile(
+                      onTap: () {
+                        Get.toNamed(AppRoutse.orderspending);
+                      },
+                      title: Text("Orders"),
+                      trailing: Icon(Icons.card_travel),
+                    ),
+                    ListTile(
+                      onTap: () {
+                        Get.toNamed(AppRoutse.orderspending );
+                      },
+                      title: Text("Archive Orders"),
+                      trailing: Icon(Icons.card_travel_sharp),
+                    ),
 
                     ListTile(
                       onTap: () {

@@ -1,6 +1,5 @@
 import 'package:ecommerce_app/controller/cart_controller.dart';
 import 'package:ecommerce_app/core/class/handingdataview.dart';
-import 'package:ecommerce_app/view/widget/cart/apparcart.dart';
 import 'package:ecommerce_app/view/widget/cart/coustembottomnavegationbarcart.dart';
 import 'package:ecommerce_app/view/widget/cart/coustemitemscartlist.dart.dart';
 import 'package:ecommerce_app/view/widget/cart/topcardcart.dart';
@@ -11,23 +10,31 @@ import 'package:get/get_core/src/get_main.dart';
 class Cart extends StatelessWidget {
   const Cart({Key? key}) : super(key: key);
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     CartControllerImp cartController = Get.put(CartControllerImp());
     return Scaffold(
-      bottomNavigationBar:GetBuilder<CartControllerImp>(builder: (controller) =>  CoustemBottomNavegationbarCart(
-        price: "${cartController.priceorder} \$",
-        discount: "10%",
-        totalprice: "${cartController.priceorder} \$",
-        controllercoupon:controller.controllercoupon!,
-        onApplyCoupon: (){},
-      ),),
+      appBar: AppBar(
+      title: Text("My Cart"),
+      ),
+      bottomNavigationBar: GetBuilder<CartControllerImp>(
+        builder: (controller) => CoustemBottomNavegationbarCart(
+          price: "${cartController.priceorder} \$",
+          discount: "${controller.discountcoupon}%",
+          shipping: "10",
+          totalprice: "${cartController.getTotalPrice()} \$",
+          controllercoupon: controller.controllercoupon!,
+          onApplyCoupon: () { 
+            controller.chekecoupon();
+          },
+        ),
+      ), 
       body: GetBuilder<CartControllerImp>(
         builder: (Controller) => Handingdatacontroller(
           statusRequest: Controller.statusRequest,
           widget: ListView(
             children: [
-              TopApaarCart(title: "My Cart"),
+        
               SizedBox(height: 10),
               TopCardCart(
                 message:

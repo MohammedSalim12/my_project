@@ -9,7 +9,7 @@ class HomeData {
     var response = await dio.get(Applink.homepage);  
     return response.data; 
   }
-  searchData(String search) async { 
+  searchData(String search) async {   
     var response = await dio.get("${Applink.search}?search=$search");  
     return response.data; 
   }

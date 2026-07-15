@@ -13,11 +13,13 @@ import 'package:ecommerce_app/view/screen/auth/success_signUp.dart';
 import 'package:ecommerce_app/view/screen/auth/forgetpassword/veryficode.dart';
 import 'package:ecommerce_app/view/screen/auth/veryficodesignup.dart';
 import 'package:ecommerce_app/view/screen/cart.dart';
+import 'package:ecommerce_app/view/screen/checkout.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/screen/homescreen.dart';
 import 'package:ecommerce_app/view/screen/items.dart';
 import 'package:ecommerce_app/view/screen/language.dart';
 import 'package:ecommerce_app/view/screen/myfavorite.dart';
+import 'package:ecommerce_app/view/screen/orders/panding.dart';
 import 'package:ecommerce_app/view/screen/prodactdetils.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -48,6 +50,8 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutse.addressadd, page: () => AdressAdd()),
   GetPage(name: AppRoutse.addressview, page: () => AddressView()),
   GetPage(name: AppRoutse.addressaddetails, page: () => AdressAddDetails()),
+  GetPage(name: AppRoutse.checkout, page: () => Checkout()),
+  GetPage(name: AppRoutse.orderspending, page: () => OrdersPending()),
   
 ]; 
 

@@ -1,0 +1,77 @@
+import 'package:ecommerce_app/controller/orders/pending_controller.dart';
+import 'package:ecommerce_app/core/class/handingdataview.dart';
+import 'package:ecommerce_app/core/constant/color.dart';
+import 'package:ecommerce_app/data/modael/ordersmodel.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+class OrdersPending extends StatelessWidget {
+  const OrdersPending({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(PendingController());
+    return Scaffold(
+      appBar: AppBar(title: const Text('Orders')),
+      body: Container(
+        child: GetBuilder<PendingController>(
+          builder: (controller) => Handingdatacontroller(statusRequest: controller.statusRequest, widget: ListView.builder(
+            itemCount: controller.data.length,
+            itemBuilder: ((context, index) => CardOrederList(listdata: controller.data[index],)),
+          ),)
+        ),
+      ),
+    );
+  }
+}
+
+class CardOrederList extends GetView<PendingController> {
+  final Ordersmodel listdata;
+  const CardOrederList({Key? key, required this.listdata}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Order Number : #${listdata.ordersId}",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Divider(),
+            Text("Order Type : ${controller.printTyprOrder(listdata.ordersId!)}"),
+            Text("Order price : ${listdata.ordersPrice} \$"),
+            Text("delivery price : ${listdata.orderspricedelivery} \$"),
+            Text("payment method : ${controller.printPaymentMethod(listdata.ordersPaymentmethod!)}"),
+            Text("Order Status : ${controller.printOrderStatus(listdata.ordersStatus!)}"),
+            Divider(),
+            Row(
+              children: [
+                Text(
+                  "Total price : ${listdata.ordersTolotalprice} \$",
+                  style: TextStyle(
+                    color: AppColor.primaryColor,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Spacer(),
+                MaterialButton(
+                  onPressed: () {},
+                  child: Text("Detelis"),
+                  color: AppColor.therdcolor,
+                  textColor: AppColor.secoundcolor,
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

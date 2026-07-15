@@ -41,6 +41,18 @@ class Applink {
   static const String addressAdd = "$server/address/add";
   static const String addressEdait = "$server/address/edit";
   static const String addressDelete = "$server/address/delete";
+  
+  //===============coupon======================
+  static const String  checkcoupon = "$server/coupon/check";
+
+  //=============== checkout ==================
+  static const String  checkout = "$server/order/checkout";
+  static const String  pendingorders = "$server/order/pending";
+  static const String  archive = "$server/order/archive";
+
+  
+
+
 
 }
 

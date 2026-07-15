@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:ecommerce_app/core/class/statusRequest.dart';
+import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/cart_data.dart';
 import 'package:ecommerce_app/data/modael/cartmodel.dart';
+import 'package:ecommerce_app/data/modael/couponmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -12,6 +14,9 @@ abstract class CartController extends GetxController {
   delete(int itemsid);
   cartcount(int itemsid);
   view();
+  chekecoupon();
+  getTotalPrice();
+  goToPageCheckout();
 }
 
 class CartControllerImp extends CartController {
@@ -23,6 +28,10 @@ class CartControllerImp extends CartController {
   List<CartModel> data = [];
   double priceorder = 0.0;
   int totlacountitems = 0;
+  CouponModel? couponModel;
+  int? discountcoupon = 0;
+  String? couponname;
+  String? couponid;
 
   @override
   add(itemsid) async {
@@ -63,6 +72,47 @@ class CartControllerImp extends CartController {
         statusRequest = StatusRequest.failuor;
       }
     }
+  }
+
+  goToPageCheckout() {
+    if (data.isEmpty) return Get.snackbar("تنبيه", "السلة فارغة");
+    Get.toNamed(
+      AppRoutse.checkout,
+      arguments: {
+        "couponid": couponid ?? "0",
+        "priceorder": priceorder.toString(),
+        "discountcoupon": discountcoupon.toString(),
+      },
+    );
+  }
+
+  @override
+  chekecoupon() async {
+    var response = await cartData.chekecoupon(controllercoupon!.text);
+    print("ITEMS RESPONSE: $response");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == "success") {
+        Map<String, dynamic> datacoupon = response['data'];
+        couponModel = CouponModel.fromJson(datacoupon);
+        discountcoupon = int.parse(couponModel!.couponDiscount!);
+        couponname = couponModel!.couponName;
+        couponid = couponModel!.couponId;
+        update();
+      } else {
+        // statusRequest = StatusRequest.failuor;
+        discountcoupon = 0;
+        couponname = null;
+        couponid = null;
+        Get.snackbar("Worning", "Coupon Not valid");
+        update();
+      }
+    }
+  }
+
+  @override
+  getTotalPrice() {
+    return (priceorder - priceorder * discountcoupon! / 100);
   }
 
   @override
