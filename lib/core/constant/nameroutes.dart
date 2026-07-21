@@ -21,7 +21,9 @@ class AppRoutse {
   static const String addressadd = "/addressadd";
   static const String addressaddetails = "/addressaddtwo";
   static const String checkout = "/checkout";
+  //Order
   static const String orderspending = "/orderspending";
+  static const String ordersdetieles= "/ordersdetieles";
 
 
 }

@@ -51,6 +51,7 @@ class LoginControllerImp extends LoginController {
             "id",
             response["user_id"].toString(),
           );
+          String userid = myServices.sharedPreferences.getString("id")!;
           myServices.sharedPreferences.setString(
             "username",
             response["user_name"],
@@ -64,7 +65,8 @@ class LoginControllerImp extends LoginController {
             response["user_phone"],
           );
           myServices.sharedPreferences.setString("step", "2");
-
+          FirebaseMessaging.instance.subscribeToTopic("users");
+          FirebaseMessaging.instance.subscribeToTopic("users${userid}");
           Get.offNamed(AppRoutse.home);
         } else {
           // الحساب غير مفعّل -> روح لصفحة إدخال كود التفعيل

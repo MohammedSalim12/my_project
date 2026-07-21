@@ -19,6 +19,7 @@ import 'package:ecommerce_app/view/screen/homescreen.dart';
 import 'package:ecommerce_app/view/screen/items.dart';
 import 'package:ecommerce_app/view/screen/language.dart';
 import 'package:ecommerce_app/view/screen/myfavorite.dart';
+import 'package:ecommerce_app/view/screen/orders/detieles.dart';
 import 'package:ecommerce_app/view/screen/orders/panding.dart';
 import 'package:ecommerce_app/view/screen/prodactdetils.dart';
 import 'package:get/get.dart';
@@ -51,7 +52,9 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutse.addressview, page: () => AddressView()),
   GetPage(name: AppRoutse.addressaddetails, page: () => AdressAddDetails()),
   GetPage(name: AppRoutse.checkout, page: () => Checkout()),
+  // Orders
   GetPage(name: AppRoutse.orderspending, page: () => OrdersPending()),
+  GetPage(name: AppRoutse.ordersdetieles, page: () => OrdersDetieles()),
   
 ]; 
 

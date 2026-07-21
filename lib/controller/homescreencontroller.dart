@@ -1,7 +1,8 @@
 import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/screen/setting.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:ecommerce_app/view/screen/notification.dart';
+import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/widgets.dart' hide Notification;
 import 'package:get/get.dart';
 
 abstract class Homescreencontroller extends GetxController {
@@ -13,10 +14,7 @@ class HomescreencontrollerImp extends Homescreencontroller {
 
   List<Widget> listpage = [
     Home(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("notification"))],
-    ),
+    Notification(), 
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Center(child: Text("profail"))],

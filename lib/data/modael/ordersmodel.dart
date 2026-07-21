@@ -10,7 +10,13 @@ class Ordersmodel {
   String? ordersPaymentmethod;
   String? ordersStatus;
   String? ordersDatatime;
-  
+  String? addressId;
+  String? addressUsersid;
+  String? addressName;
+  String? addressCity;
+  String? addressStreet;
+  String? addressLat;
+  String? addressLong;
 
   Ordersmodel.fromJson(Map<String, dynamic> json) {
     ordersId = json['orders_id'].toString();
@@ -23,7 +29,13 @@ class Ordersmodel {
     ordersCoupon = json['orders_coupon'].toString();
     ordersPaymentmethod = json['orders_paymentmethod'].toString();
     ordersStatus = json['orders_status'].toString();
-    ordersDatatime = json['	orders_datetime'].toString();
-    
+    ordersDatatime = json['orders_datetime'].toString();
+    addressId = json['address_id'].toString();
+    addressUsersid = json['address_usersid'].toString();
+    addressName = json['address_name'].toString();
+    addressCity = json['address_city'].toString();
+    addressStreet = json['address_street'].toString();
+    addressLat = json['address_lat'].toString();
+    addressLong= json['address_long'].toString();
   }
 }

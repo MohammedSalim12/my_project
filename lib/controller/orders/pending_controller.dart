@@ -43,6 +43,9 @@ class PendingController extends GetxController {
   }
 
   getOrder() async {
+    data.clear();
+    statusRequest = StatusRequest.loding;
+    update();
     var response = await pendingData.getData(
       int.parse(myservices.sharedPreferences.getString("id")!),
     );
@@ -50,13 +53,17 @@ class PendingController extends GetxController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == "success") {
-        List lastdata = response['data'];
-        data.addAll(lastdata.map((e) => Ordersmodel.fromJson(e)));
+        List listdata = response['data'];
+        data.addAll(listdata.map((e) => Ordersmodel.fromJson(e)));
       } else {
         statusRequest = StatusRequest.failuor;
       }
     }
     update();
+  }
+
+  refreshOrder() {
+    getOrder();
   }
 
   @override
