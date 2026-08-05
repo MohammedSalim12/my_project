@@ -2,6 +2,7 @@ import 'package:ecommerce_app/controller/checkout_controller.dart';
 import 'package:ecommerce_app/core/class/handingdataview.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/imageasset.dart';
+import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/view/widget/checkout/carddeliverytype.dart';
 import 'package:ecommerce_app/view/widget/checkout/cardpaymentMethod.dart';
 import 'package:ecommerce_app/view/widget/checkout/cardshippingaddress.dart';
@@ -14,7 +15,7 @@ class Checkout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   CheckoutController controller = Get.put(CheckoutController());
+    CheckoutController controller = Get.put(CheckoutController());
     return Scaffold(
       appBar: AppBar(title: const Text('checkout')),
       bottomNavigationBar: Container(
@@ -57,7 +58,7 @@ class Checkout extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    controller.choosePaymentMethod("1"); //card  
+                    controller.choosePaymentMethod("1"); //card
                   },
                   child: CardpaymentMethod(
                     title: "Payment Cards",
@@ -83,9 +84,7 @@ class Checkout extends StatelessWidget {
                       child: CarddeliVeryTypeCheckout(
                         title: "Delivery",
                         imagename: AppImageasset.delivery2,
-                        active: controller.deliverytype == "0"
-                            ? true
-                            : false,
+                        active: controller.deliverytype == "0" ? true : false,
                       ),
                     ),
                     SizedBox(width: 10),
@@ -96,9 +95,7 @@ class Checkout extends StatelessWidget {
                       child: CarddeliVeryTypeCheckout(
                         title: "Drive thru",
                         imagename: AppImageasset.drivethru,
-                        active: controller.deliverytype == "1"
-                            ? true
-                            : false,
+                        active: controller.deliverytype == "1" ? true : false,
                       ),
                     ),
                   ],
@@ -108,6 +105,7 @@ class Checkout extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      if (controller.dataaddress.isNotEmpty)
                       Text(
                         "Shipping Address :",
                         style: TextStyle(
@@ -116,6 +114,21 @@ class Checkout extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
+                      if (controller.dataaddress.isEmpty)
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutse.addressadd);
+                          },
+                          child: Container(
+                            child: Center(
+                              child: Text(
+                                "plases Add shipping address \n Click here",
+                                style: TextStyle(color: AppColor.primaryColor , ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                        ),
                       SizedBox(height: 10),
                       ...List.generate(
                         controller.dataaddress.length,

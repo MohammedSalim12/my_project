@@ -4,8 +4,8 @@ import 'package:ecommerce_app/core/class/statusRequest.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/orders/details_data.dart';
-import 'package:ecommerce_app/data/modael/cartmodel.dart';
-import 'package:ecommerce_app/data/modael/ordersmodel.dart';
+import 'package:ecommerce_app/data/model/cartmodel.dart';
+import 'package:ecommerce_app/data/model/ordersmodel.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

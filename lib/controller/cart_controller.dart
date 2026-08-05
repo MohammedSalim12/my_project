@@ -4,8 +4,8 @@ import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/cart_data.dart';
-import 'package:ecommerce_app/data/modael/cartmodel.dart';
-import 'package:ecommerce_app/data/modael/couponmodel.dart';
+import 'package:ecommerce_app/data/model/cartmodel.dart';
+import 'package:ecommerce_app/data/model/couponmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -74,7 +74,7 @@ class CartControllerImp extends CartController {
     }
   }
 
-  goToPageCheckout() {
+  goToPageCheckout() {    
     if (data.isEmpty) return Get.snackbar("تنبيه", "السلة فارغة");
     Get.toNamed(
       AppRoutse.checkout,

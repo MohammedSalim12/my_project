@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/view/screen/home.dart';
+import 'package:ecommerce_app/view/screen/offers.dart';
 import 'package:ecommerce_app/view/screen/setting.dart';
 import 'package:ecommerce_app/view/screen/notification.dart';
 import 'package:flutter/material.dart' hide Notification;
@@ -15,19 +16,16 @@ class HomescreencontrollerImp extends Homescreencontroller {
   List<Widget> listpage = [
     Home(),
     Notification(), 
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: Text("profail"))],
-    ),
+    OffersView(),
     Setting(), 
   ];
 
-  List listtitle = ["Home", "notific", "profile", "setting"]; 
+  List listtitle = ["Home", "notific", "offers", "setting"]; 
 
   List icondata = [
     Icons.home_outlined,
     Icons.notification_important,
-    Icons.person_3_outlined,
+    Icons.offline_bolt_outlined,
     Icons.settings_outlined,  
   ];
   @override

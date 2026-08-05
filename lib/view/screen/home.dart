@@ -3,7 +3,7 @@ import 'package:ecommerce_app/controller/homepage_controller.dart';
 import 'package:ecommerce_app/core/class/handingdataview.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/nameroutes.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:ecommerce_app/linkapi.dart';
 import 'package:ecommerce_app/view/widget/coustemappar.dart';
 import 'package:ecommerce_app/view/widget/home/coustemcardhome.dart';
@@ -44,13 +44,13 @@ class Home extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Coustemcardhome(
-                          title: "A summer suprice ",
-                          body: "cashbak 20%",
+                          title: "${controller.settings['settings_titleome']}",
+                          body: "${controller.settings['settings_bodyhome']}",
                         ),
                         // القسم التاني
                         ListCategoriesHome(),
                         Text(
-                          "prodact for you",
+                          "Top selling", 
                           style: TextStyle(
                             fontSize: 18,
                             color: AppColor.primaryColor,
@@ -58,7 +58,7 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Listitemhome(),
+                        ListItemsHome(),
                       ],
                     )
                   : ListItemsSearch(listdatamodel: controller.listdata),

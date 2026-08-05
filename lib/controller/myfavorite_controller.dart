@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/class/statusRequest.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/myfavorite_data.dart';
-import 'package:ecommerce_app/data/modael/favoritemodel.dart';
+import 'package:ecommerce_app/data/model/favoritemodel.dart';
 import 'package:get/get.dart';
 
 class MyfavoriteController extends GetxController {

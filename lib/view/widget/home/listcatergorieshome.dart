@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/controller/homepage_controller.dart';
 import 'package:ecommerce_app/core/function/translatedatabase.dart';
-import 'package:ecommerce_app/data/modael/categiorsmmodel.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/categiorsmmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:ecommerce_app/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -5,7 +5,7 @@ import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/home_data.dart';
 import 'package:ecommerce_app/data/datasource/remote/items_data.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,6 @@ abstract class ItemsController extends GetxController {
   cheksearch(val);
   onSearchItems();
   searchData();
-
 }
 
 class ItemsControllerImp extends ItemsController {
@@ -33,6 +32,7 @@ class ItemsControllerImp extends ItemsController {
   int? catId;
   TextEditingController? search;
   List<Itemsmodel> listdata = [];
+  int deliverytime = 0;
 
   @override
   void onInit() {
@@ -47,6 +47,7 @@ class ItemsControllerImp extends ItemsController {
 
   @override
   intialData() async {
+    deliverytime = myservices.sharedPreferences.getInt(deliverytime.toString())!;
     categories = Get.arguments['categories'];
     selectedCat = Get.arguments['selectedCat'];
     catId = Get.arguments['catId'];
@@ -114,7 +115,7 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-   @override
+  @override
   searchData() async {
     statusRequest = StatusRequest.loding;
     update();

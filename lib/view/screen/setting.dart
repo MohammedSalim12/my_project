@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Setting extends StatelessWidget {
   const Setting({Key? key}) : super(key: key);
@@ -46,14 +47,14 @@ class Setting extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ListTile(
-                      onTap: () {},
-                      title: Text("Disable Notification"),
-                      trailing: Switch(
-                        value: true,
-                        onChanged: (val) {},
-                      ), // <====== cameback later
-                    ),
+                    // ListTile(
+                    //   onTap: () {},
+                    //   title: Text("Disable Notification"),
+                    //   trailing: Switch(
+                    //     value: true,
+                    //     onChanged: (val) {},
+                    //   ), // <====== cameback later
+                    // ),
                     ListTile(
                       onTap: () {
                         Get.toNamed(AppRoutse.orderspending);
@@ -63,7 +64,7 @@ class Setting extends StatelessWidget {
                     ),
                     ListTile(
                       onTap: () {
-                        Get.toNamed(AppRoutse.orderspending );
+                        Get.toNamed(AppRoutse.ordersarchive );
                       },
                       title: Text("Archive Orders"),
                       trailing: Icon(Icons.card_travel_sharp),
@@ -84,7 +85,9 @@ class Setting extends StatelessWidget {
                     ),
 
                     ListTile(
-                      onTap: () {},
+                      onTap: () {
+                        launchUrl(Uri.parse("tel+9636532548"));
+                      },
                       title: Text("contact us"),
                       trailing: Icon(Icons.phone_enabled_outlined),
                     ),

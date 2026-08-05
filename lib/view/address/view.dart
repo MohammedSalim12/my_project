@@ -1,7 +1,7 @@
 import 'package:ecommerce_app/controller/address/adressview_controller.dart';
 import 'package:ecommerce_app/core/class/handingdataview.dart';
 import 'package:ecommerce_app/core/constant/nameroutes.dart';
-import 'package:ecommerce_app/data/modael/addressmodel.dart';
+import 'package:ecommerce_app/data/model/addressmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -56,7 +56,12 @@ class Applink {
   static const String notification = "$server/notification/notificationview";
   //=============== order =====================
   static const String ordersdetails = "$server/order/details";
-
+  static const String ordersdelete = "$server/order/delete";
+  static const String ordersarchive = "$server/order/archive";
+  //=============== offers ====================
+  static const String offers = "$server/offers";
+  //=============== rating ====================
+  static const String rating = "$server/rating";
 }
 
 

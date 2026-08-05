@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/controller/cart_controller.dart';
 import 'package:ecommerce_app/core/class/statusRequest.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:get/get.dart';
 
 abstract class ProdactdetilsController extends GetxController {}

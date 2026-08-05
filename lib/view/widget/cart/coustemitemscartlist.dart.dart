@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
-import 'package:ecommerce_app/core/constant/imageasset.dart';
 import 'package:ecommerce_app/linkapi.dart';
 import 'package:flutter/material.dart';
 

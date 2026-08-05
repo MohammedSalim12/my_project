@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/class/statusRequest.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/address_data.dart';
-import 'package:ecommerce_app/data/modael/addressmodel.dart';
+import 'package:ecommerce_app/data/model/addressmodel.dart';
 import 'package:get/get.dart';
 
 class AdressviewController extends GetxController {

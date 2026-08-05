@@ -5,7 +5,7 @@ import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/address_data.dart';
 import 'package:ecommerce_app/data/datasource/remote/checkout_data.dart';
-import 'package:ecommerce_app/data/modael/addressmodel.dart';
+import 'package:ecommerce_app/data/model/addressmodel.dart';
 import 'package:get/get.dart';
 
 class CheckoutController extends GetxController {
@@ -24,7 +24,7 @@ class CheckoutController extends GetxController {
 
   choosePaymentMethod(String val) {
     paymentMethod = val;
-    update();  
+    update();
   }
 
   chooseDeliveryType(String val) {
@@ -52,6 +52,7 @@ class CheckoutController extends GetxController {
       if (response['status'] == "success") {
         List Listdata = response['data'];
         dataaddress.addAll(Listdata.map((e) => AddressModel.fromJson(e)));
+        addressId = dataaddress[0].addressId.toString();  
       } else {
         statusRequest = StatusRequest.failuor;
       }
@@ -61,10 +62,16 @@ class CheckoutController extends GetxController {
   }
 
   checkout() async {
-    if (paymentMethod == null)
+    if (paymentMethod == null) {
       return Get.snackbar("Error", "plase sleect a  payment methid");
-      if (deliverytype == null)
+    }
+    if (deliverytype == null) {
       return Get.snackbar("Error", "plase sleect a  order Type");
+    }
+    if (dataaddress.isEmpty) {
+      return Get.snackbar("Error", "plase sellect Shipping Address");
+    }
+
     statusRequest = StatusRequest.loding;
     update();
 

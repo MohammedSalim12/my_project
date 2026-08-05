@@ -4,7 +4,7 @@ import 'package:ecommerce_app/controller/items_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/imageasset.dart';
 import 'package:ecommerce_app/core/function/translatedatabase.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:ecommerce_app/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,6 +63,16 @@ class CoustemlistItems extends GetView<ItemsControllerImp> {
                     style: TextStyle(fontSize: 10),
                     textAlign: TextAlign.center,
                   ),
+                  Row(
+                    //  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                     children: [
+                      Text("${controller.deliverytime} Min" , style: TextStyle(fontFamily: "sans"), textAlign: TextAlign.center,) ,
+                      SizedBox(width: 10,),
+                      Icon(Icons.timer_sharp , color: AppColor.grey,)
+                     ],
+                  ),
+
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                     children: [

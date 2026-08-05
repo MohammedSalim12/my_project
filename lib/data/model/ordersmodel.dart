@@ -7,6 +7,8 @@ class Ordersmodel {
   String? ordersPrice;
   String? ordersTolotalprice;
   String? ordersCoupon;
+  String? ordersRatig;
+  String? ordersNoterating;
   String? ordersPaymentmethod;
   String? ordersStatus;
   String? ordersDatatime;
@@ -27,6 +29,8 @@ class Ordersmodel {
     ordersPrice = json['orders_price'].toString();
     ordersTolotalprice = json['orders_totalprice'].toString();
     ordersCoupon = json['orders_coupon'].toString();
+    ordersRatig = json['orders_rating'].toString();
+    ordersNoterating = json['orders_noterating'].toString();
     ordersPaymentmethod = json['orders_paymentmethod'].toString();
     ordersStatus = json['orders_status'].toString();
     ordersDatatime = json['orders_datetime'].toString();

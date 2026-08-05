@@ -10,4 +10,8 @@ class PendingData {
 
     return response.data;
   }
+  deleteData(int orderId) async {
+    var response = await dio.post("${Applink.ordersdelete}?orderid=$orderId");
+    return response.data;
+  }
 }

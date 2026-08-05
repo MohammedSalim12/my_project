@@ -1,5 +1,5 @@
 import 'package:ecommerce_app/core/constant/imageasset.dart';
-import 'package:ecommerce_app/data/modael/onboardingmodel.dart';
+import 'package:ecommerce_app/data/model/onboardingmodel.dart';
 
 List<Onboardingmodel> onboardingList = [
   Onboardingmodel(

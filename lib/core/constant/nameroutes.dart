@@ -24,6 +24,7 @@ class AppRoutse {
   //Order
   static const String orderspending = "/orderspending";
   static const String ordersdetieles= "/ordersdetieles";
+  static const String ordersarchive= "/ordersarchive";
 
 
 }

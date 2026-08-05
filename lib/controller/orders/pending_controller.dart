@@ -3,7 +3,7 @@ import 'package:ecommerce_app/core/class/statusRequest.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/orders/pending_data.dart';
-import 'package:ecommerce_app/data/modael/ordersmodel.dart';
+import 'package:ecommerce_app/data/model/ordersmodel.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
@@ -36,8 +36,11 @@ class PendingController extends GetxController {
     } else if (val == "1") {
       return "The order is bening prapered";
     } else if (val == "2") {
+      return "Redy To Picked up by Delivery man";
+    } else if (val == "3") {
       return "in the way";
-    } else {
+    }
+     else {
       return "Archive";
     }
   }
@@ -55,6 +58,23 @@ class PendingController extends GetxController {
       if (response['status'] == "success") {
         List listdata = response['data'];
         data.addAll(listdata.map((e) => Ordersmodel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failuor;
+      }
+    }
+    update();
+  }
+
+  deleteOrder(String orderId) async {
+    data.clear();
+    statusRequest = StatusRequest.loding;
+    update();
+    var response = await pendingData.deleteData(int.parse(orderId));
+    print("ITEMS RESPONSE: $response");
+    statusRequest = handlingData(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response['status'] == "success") {
+        refreshOrder();
       } else {
         statusRequest = StatusRequest.failuor;
       }

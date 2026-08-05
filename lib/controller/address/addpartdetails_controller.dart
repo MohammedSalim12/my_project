@@ -18,17 +18,17 @@ class AddAddressDetailsController extends GetxController {
   TextEditingController? street;
 
   intialData() {
-  name = TextEditingController();
-  city = TextEditingController();
-  street = TextEditingController();
-  lat = Get.arguments['lat'];
-  long = Get.arguments['long'];
-  print(lat);
-  print(long);
-  
-  statusRequest = StatusRequest.success;
-  update();
-}
+    name = TextEditingController();
+    city = TextEditingController();
+    street = TextEditingController();
+    lat = Get.arguments['lat'];
+    long = Get.arguments['long'];
+    print(lat);
+    print(long);
+
+    statusRequest = StatusRequest.success;
+    update();
+  }
 
   addAdress() async {
     statusRequest = StatusRequest.loding;
@@ -46,6 +46,7 @@ class AddAddressDetailsController extends GetxController {
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == "success") {
         Get.offAllNamed(AppRoutse.home);
+        Get.snackbar("Worning", "Now , you can add address and select this order address");
       } else {
         statusRequest = StatusRequest.failuor;
       }

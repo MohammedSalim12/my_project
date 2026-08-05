@@ -1,5 +1,5 @@
+import 'dart:io';
 import 'package:ecommerce_app/controller/homescreencontroller.dart';
-import 'package:ecommerce_app/controller/items_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/view/widget/home/coustembuttomappar.dart';
@@ -17,7 +17,7 @@ class Homescreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColor.primaryColor,
           onPressed: () {
-            Get.toNamed(AppRoutse.cart); 
+            Get.toNamed(AppRoutse.cart);
           },
           child: Icon(Icons.shopping_basket_outlined),
         ),
@@ -43,8 +43,22 @@ class Homescreen extends StatelessWidget {
             ],
           ),
         ),
-        body: controller.listpage.elementAt(controller.currentpage),
+        body: WillPopScope(
+          child: controller.listpage.elementAt(controller.currentpage),
+          onWillPop: () {
+            Get.defaultDialog(
+              title: "warning" ,titleStyle: TextStyle(fontWeight: FontWeight.bold),
+              middleText: "Do you want to exit the app",
+              onConfirm: () {
+                exit(0);
+              },
+              buttonColor: AppColor.primaryColor,
+              onCancel: () {},
+            );
+            return Future.value(false);
+          },
+        ),
       ),
-    );
+    ); 
   }
 }

@@ -2,7 +2,7 @@ import 'package:ecommerce_app/controller/favorite_controller.dart';
 import 'package:ecommerce_app/controller/items_controller.dart';
 import 'package:ecommerce_app/core/class/handingdataview.dart';
 import 'package:ecommerce_app/core/constant/nameroutes.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:ecommerce_app/view/screen/home.dart';
 import 'package:ecommerce_app/view/widget/coustemappar.dart';
 import 'package:ecommerce_app/view/widget/items/coustemlistitems.dart';
@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 class Items extends StatelessWidget {
   Items({Key? key}) : super(key: key) {}
 
-  @override
+  @override 
   Widget build(BuildContext context) {
     FavoriteController controllerFav = Get.put(FavoriteController());
     return Scaffold(

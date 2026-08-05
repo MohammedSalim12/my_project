@@ -5,17 +5,15 @@ import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/core/function/handingdatacontrolleer.dart';
 import 'package:ecommerce_app/core/services/services.dart';
 import 'package:ecommerce_app/data/datasource/remote/home_data.dart';
-import 'package:ecommerce_app/data/modael/itemsmodel.dart';
+import 'package:ecommerce_app/data/model/itemsmodel.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
-abstract class HomePageController extends GetxController {
+abstract class HomePageController extends SearchMixController {
   initialData();
   getData();
   goToItems(List categories, int selectedCat, int categoriesid);
   cheksearch(val);
-  onSearchItems();
-  searchData();
 }
 
 class HomePageControllerImp extends HomePageController {
@@ -31,6 +29,8 @@ class HomePageControllerImp extends HomePageController {
   bool isSearch = false;
   List categories = [];
   List items = [];
+  Map settings = {};
+  int deliverytime = 0;
 
   @override
   cheksearch(val) {
@@ -67,7 +67,14 @@ class HomePageControllerImp extends HomePageController {
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == "success") {
         categories.addAll(response['categories']);
-        items.addAll(response['items']);
+        items.addAll(response['items']);            
+        settings.addAll(response['settings'][0]);
+        deliverytime = settings['settings_deliverytime'];
+
+        myservices.sharedPreferences.setString(
+          "deliverytime",
+          deliverytime.toString(),
+        );
       } else {
         statusRequest = StatusRequest.failuor;
       }
@@ -126,5 +133,45 @@ class HomePageControllerImp extends HomePageController {
       AppRoutse.prodactdetiles,
       arguments: {"itemsmodel": itemsmodel},
     );
+  }
+}
+
+class SearchMixController extends GetxController {
+  List<Itemsmodel> listdata = [];
+
+  late StatusRequest statusRequest;
+  HomeData homeData = HomeData(Dio());
+
+  searchData() async {
+    statusRequest = StatusRequest.loding;
+    var response = await homeData.searchData(search!.text);
+    print("=============================== Controller $response ");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        listdata.clear();
+        List responsedata = response['data'];
+        listdata.addAll(responsedata.map((e) => Itemsmodel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failuor;
+      }
+    }
+    update();
+  }
+
+  bool isSearch = false;
+  TextEditingController? search;
+  checkSearch(val) {
+    if (val == "") {
+      statusRequest = StatusRequest.none;
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    searchData();
+    update();
   }
 }
