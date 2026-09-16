@@ -23,6 +23,7 @@ import 'package:ecommerce_app/view/screen/orders/archive.dart';
 import 'package:ecommerce_app/view/screen/orders/detieles.dart';
 import 'package:ecommerce_app/view/screen/orders/panding.dart';
 import 'package:ecommerce_app/view/screen/prodactdetils.dart';
+import 'package:ecommerce_app/view/widget/orders/ordertrakcing.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:ecommerce_app/view/screen/items.dart';
@@ -57,6 +58,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoutse.orderspending, page: () => OrdersPending()),
   GetPage(name: AppRoutse.ordersdetieles, page: () => OrdersDetieles()),
   GetPage(name: AppRoutse.ordersarchive, page: () => OrdersArchive()),
+  GetPage(name: AppRoutse.orderstrackinge, page: () => Traking()),
   
 ]; 
 

@@ -14,6 +14,6 @@ class Coustemtextbodyauth extends StatelessWidget {
         style: Theme.of(context).textTheme.bodyLarge,
         textAlign: TextAlign.center,
       ),
-    );
+    ); 
   }
 }

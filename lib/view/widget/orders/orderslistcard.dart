@@ -2,7 +2,6 @@ import 'package:ecommerce_app/controller/orders/pending_controller.dart';
 import 'package:ecommerce_app/core/constant/color.dart';
 import 'package:ecommerce_app/core/constant/nameroutes.dart';
 import 'package:ecommerce_app/data/model/ordersmodel.dart';
-import 'package:ecommerce_app/view/widget/orders/dialograting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -72,15 +71,25 @@ class CardOrederList extends GetView<PendingController> {
                   textColor: AppColor.secoundcolor,
                 ),
                 Spacer(),
-                if(listdata.ordersStatus! == "0")
-                MaterialButton(
-                  onPressed: () {
-                    controller.deleteOrder(listdata.ordersId!) ;
-                  },
-                  child: Text("Delete"),
-                  color: AppColor.therdcolor,
-                  textColor: AppColor.secoundcolor,
-                ),
+                if (listdata.ordersStatus! == "0")
+                  MaterialButton(
+                    onPressed: () {
+                      controller.deleteOrder(listdata.ordersId!);
+                    },
+                    child: Text("Delete"),
+                    color: AppColor.therdcolor,
+                    textColor: AppColor.secoundcolor,
+                  ),
+                if (listdata.ordersStatus! == "3")
+                  MaterialButton(
+                    onPressed: () {
+                      // controller.deleteOrder(listdata.ordersId!) ;
+                      Get.toNamed(AppRoutse.orderstrackinge , arguments: {"ordersmodel" : listdata});
+                    },
+                    child: Text("Tracking"),
+                    color: AppColor.therdcolor,
+                    textColor: AppColor.secoundcolor,
+                  ),
               ],
             ),
           ],

@@ -22,8 +22,8 @@ class LoginControllerImp extends LoginController {
   late TextEditingController password;
   LoginData loginData = LoginData(Dio());
   StatusRequest statusRequest = StatusRequest.none;
-
   bool isshowpasswoed = true;
+  
   showPassword() {
     isshowpasswoed = isshowpasswoed == true ? false : true;
     update();
